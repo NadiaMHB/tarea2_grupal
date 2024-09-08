@@ -23,14 +23,17 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each=" : ${}">
-            <td th:text="${}"></td>
-            <td th:text="${}"></td>
-            <td th:text="${}"></td>
-            <td th:text="${}"></td>
-            <td th:text="${}"></td>
-            <td><a th:href="@{/}" class="btn btn-primary">Editar</a></td>
-            <td><a th:href="@{/}" class="btn btn-primary">Borrar</a></td>
+        <tr th:each="empleado, info : ${employeeList}">
+            <td th:text="${info.index + 1}"></td>
+            <td th:text="${empleado.fullName}"></td>
+            <td th:text="${empleado.email}"></td>
+            <td th:text="${empleado.department.departmentName}"></td>
+            <td th:text="${empleado.department.location.city}"></td>
+            <td></td>
+            <td>
+                <a th:href="@{'/employee/info?id=' + ${empleado.id}}" class="btn btn-primary">Editar</a>
+                <a th:href="@{'/employee/delete/' + ${empleado.id}}" class="btn btn-danger">Borrar</a>
+            </td>
         </tr>
         </tbody>
     </table>

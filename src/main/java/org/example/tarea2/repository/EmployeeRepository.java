@@ -10,8 +10,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
 
-    @Transactional
-    @Modifying
-    @Query(nativeQuery = true, value = "UPDATE employees SET first_name = ?1, phone = ?2 WHERE id = ?3")
-    void actualizarEmpleado(String firstName, String phone, Integer id);
 }

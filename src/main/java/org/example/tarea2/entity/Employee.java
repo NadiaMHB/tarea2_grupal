@@ -21,6 +21,12 @@ public class Employee {
     @Column(name = "last_name", length = 25, nullable = false)
     private String lastName;
 
+
+    public String getFullName() {
+        return lastName + ", " + firstName;
+    }
+
+
     @Column(name = "email", length = 25, nullable = false, unique = true)
     private String email;
 
@@ -33,8 +39,9 @@ public class Employee {
     @Column(name = "hire_date", nullable = false)
     private java.sql.Timestamp hireDate;
 
-    @Column(name = "job_id", length = 10)
-    private String jobId;
+    @ManyToOne
+    @JoinColumn(name = "job_id")
+    private Jobs jobId;
 
     @Column(name = "salary", precision = 8, scale = 2)
     private java.math.BigDecimal salary;

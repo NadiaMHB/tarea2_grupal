@@ -2,7 +2,11 @@ package org.example.tarea2.entity;
 
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "departments")
 public class Departments {
@@ -18,9 +22,9 @@ public class Departments {
     @Column(name = "manager_id")
     private Integer managerId;
 
-    //@ManyToOne
-    //@JoinColumn(name = "location_id")
-    //private Locations location;
+    @ManyToOne
+    @JoinColumn(name = "location_id")
+    private Locations location;
 
     //@OneToMany(mappedBy = "department")
     //private List<Employees> employees;

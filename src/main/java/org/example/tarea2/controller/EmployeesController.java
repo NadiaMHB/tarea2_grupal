@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,26 +21,39 @@ public class EmployeesController {
         this.employeeRepository = employeeRepository;
     }
 
+    // Listar todos los empleados
     @GetMapping({"employee/list", "employee"})
     public String listarEmpleados(Model model) {
         List<Employee> lista = employeeRepository.findAll();
         model.addAttribute("employeeList", lista);
-
         return "employee/list";
     }
 
-    /*@GetMapping("")
-    public String informEmpleado() {
-        //        COMPLETAR
-        return "XXXXXX";
+    @GetMapping("employee/info")
+    public String informEmpleado(Model model, @RequestParam("id") int id) {
+        Optional<Employee> optionalEmployee = employeeRepository.findById(id);
+
+        if (optionalEmployee.isPresent()) {
+            Employee employee = optionalEmployee.get();
+            model.addAttribute("employee", employee);
+            return "employee/info";
+        } else {
+            return "redirect:/employee/list";
+        }
+    }
+
+    @PostMapping("/employee/save")
+    public String guardarEmpleado(Employee employee) {
+        employeeRepository.save(employee);
+        return "redirect:/employee/list";
     }
 
     @GetMapping("")
     public String borrarEmpleado(Model model) {
         model.addAttribute("tipo_alert", "success");
         model.addAttribute("msg", "Se borro el empleado");
-//        COMPLETAR
+
         return "XXXXXX";
-    }*/
+    }
 
 }

@@ -11,46 +11,42 @@
 
 <div class="container mt-5">
     <h2>Información</h2>
-    <form th:action="@{/save}" method="post" th:object="${employee}">
+    <form th:action="@{/employee/save}" method="post" th:object="${employee}">
+        <input th:value="${employee.id}" name="id" type="hidden" />
+
         <!-- Nombre -->
         <div class="mb-3">
-            <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="nombre" th:text="${}" >
+            <label for="firstName" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="firstName" th:field="${employee.firstName}" />
         </div>
 
         <!-- Apellido -->
         <div class="mb-3">
-            <label for="apellido" class="form-label">Apellido</label>
-            <input type="text" class="form-control" id="apellido" th:text="${}" >
+            <label for="lastName" class="form-label">Apellido</label>
+            <input type="text" class="form-control" id="lastName" th:field="${employee.lastName}" />
         </div>
 
         <!-- Correo -->
         <div class="mb-3">
-            <label for="correo" class="form-label">Correo</label>
-            <input type="email" class="form-control" id="correo" th:text="${}" >
+            <label for="email" class="form-label">Correo</label>
+            <input type="email" class="form-control" id="email" th:field="${employee.email}" />
         </div>
 
         <!-- Departamento -->
         <div class="mb-3">
-            <label for="departamento" class="form-label">Departamento</label>
-            <input type="text" class="form-control" id="departamento" th:text="${}" >
+            <label for="departmentName" class="form-label">Departamento</label>
+            <input type="text" class="form-control" id="departmentName" th:field="${employee.department.departmentName}" />
         </div>
 
         <!-- Ciudad -->
         <div class="mb-3">
-            <label for="ciudad" class="form-label">Ciudad</label>
-            <input type="text" class="form-control" id="ciudad" th:text="${}" >
-        </div>
-
-        <!-- Trabajo (Combobox) -->
-        <div class="mb-3">
-            <label for="trabajo" class="form-label">Trabajo</label>
-            <select class="form-select" id="trabajo" th:text="${}">
-            </select>
+            <label for="city" class="form-label">Ciudad</label>
+            <input type="text" class="form-control" id="city" th:field="${employee.department.location.city}" />
         </div>
 
         <!-- Botón de regreso -->
-        <button type="submit" class="btn btn-primary">Regresar</button>
+        <a th:href="@{/employee/list}" class="btn btn-danger">Cancelar</a>
+        <button type="submit" class="btn btn-primary">Actualizar</button>
     </form>
 </div>
 
