@@ -1,10 +1,13 @@
 package org.example.tarea2.entity;
 
-
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 @Entity
-@Table(name ="employee" )
+@Table(name ="employees" )
 public class Employee {
 
     @Id
@@ -48,7 +51,5 @@ public class Employee {
 
     @Column(name = "enabled", nullable = false)
     private Integer enabled;
-
-
 
 }
