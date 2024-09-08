@@ -52,11 +52,17 @@ public class Employee {
     @Column(name = "manager_id")
     private Integer managerId;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)  // O CascadeType.ALL si deseas más opciones de cascada
     @JoinColumn(name = "department_id")
     private Departments department;
 
+    /*@ManyToOne
+    @JoinColumn(name = "department_id")
+    private Departments department;*/
+
     @Column(name = "enabled", nullable = false)
     private Integer enabled;
+
+
 
 }

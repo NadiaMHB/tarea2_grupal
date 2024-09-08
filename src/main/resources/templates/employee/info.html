@@ -44,6 +44,13 @@
             <input type="text" class="form-control" id="city" th:field="${employee.department.location.city}" />
         </div>
 
+        <!-- Trabajo -->
+        <div class="mb-3">
+            <label for="jobId" class="form-label">Trabajo</label>
+            <input type="text" class="form-control" id="jobId" th:field="${employee.jobId.jobTitle}" />
+        </div>
+
+
         <!-- Botón de regreso -->
         <a th:href="@{/employee/list}" class="btn btn-danger">Cancelar</a>
         <button type="submit" class="btn btn-primary">Actualizar</button>

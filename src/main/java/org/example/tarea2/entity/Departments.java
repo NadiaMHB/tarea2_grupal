@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Entity
@@ -13,10 +15,10 @@ public class Departments {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "department_id", nullable = false, unique = true)
+    @Column(name = "department_id", unique = true)
     private Integer departmentId;
 
-    @Column(name = "department_name", length = 30, nullable = false)
+    @Column(name = "department_name", length = 30)
     private String departmentName;
 
     @Column(name = "manager_id")
@@ -26,6 +28,6 @@ public class Departments {
     @JoinColumn(name = "location_id")
     private Locations location;
 
-    //@OneToMany(mappedBy = "department")
-    //private List<Employees> employees;
+    @OneToMany(mappedBy = "department")
+    private List<Employee> employees;
 }
