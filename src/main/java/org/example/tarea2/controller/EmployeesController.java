@@ -1,5 +1,6 @@
 package org.example.tarea2.controller;
 
+import org.example.tarea2.repository.EmployeeRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -8,9 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 @Controller
 public class EmployeesController {
 
-
-    //private EmployeeDAO employeesDAO = new EmployeeDAO();
-    //private JobDAO  jobsDAO = new JobDAO();
+    final EmployeeRepository employeeRepository;
+    public EmployeesController(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
+    }
 
     @GetMapping({"employee/list", "employee"})
     public String listarEmpleados() {
