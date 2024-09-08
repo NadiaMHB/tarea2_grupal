@@ -32,7 +32,7 @@
             <td></td>
             <td>
                 <a th:href="@{'/employee/info?id=' + ${empleado.id}}" class="btn btn-primary">Editar</a>
-                <a th:href="@{'/employee/delete/' + ${empleado.id}}" class="btn btn-danger">Borrar</a>
+                <a th:href="@{'/employee/delete?id=' + ${empleado.id}}" class="btn btn-danger">Borrar</a>
             </td>
         </tr>
         </tbody>

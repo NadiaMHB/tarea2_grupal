@@ -48,12 +48,21 @@ public class EmployeesController {
         return "redirect:/employee/list";
     }
 
-    @GetMapping("")
-    public String borrarEmpleado(Model model) {
-        model.addAttribute("tipo_alert", "success");
-        model.addAttribute("msg", "Se borro el empleado");
 
-        return "XXXXXX";
+    @GetMapping("/employee/delete")
+    public String borrarEmpleado(Model model,
+                                      @RequestParam("id") int id) {
+
+        Optional<Employee> optionalEmployee = employeeRepository.findById(id);
+
+        if (optionalEmployee.isPresent()) {
+            employeeRepository.deleteById(id);
+            model.addAttribute("tipo_alert", "success");
+            model.addAttribute("msg", "Se borro el empleado");
+        }
+        return "redirect:/employee/list";
+
     }
+
 
 }
